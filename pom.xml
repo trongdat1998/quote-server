@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <modules>
+        <module>quote-server</module>
+        <module>quote-bean</module>
+    </modules>
+    <parent>
+        <groupId>io.bhex</groupId>
+        <artifactId>base-parent</artifactId>
+        <version>1.0.0.BHPC.RELEASE</version>
+    </parent>
+
+    <groupId>io.bhex.broker.quote</groupId>
+    <artifactId>quote-parent</artifactId>
+    <version>1.0.0.BHPC-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <properties>
+        <bhex-base-common.version>1.1.1.BHPC.RELEASE</bhex-base-common.version>
+        <bhex-base-proto.version>1.0.5.BHPC.RELEASE</bhex-base-proto.version>
+        <quote-engine-data.version>1.0.0.BHPC.RELEASE</quote-engine-data.version>
+        <quote-server-base.version>1.0.0.BHPC-SNAPSHOT</quote-server-base.version>
+
+        <quote-service.version>1.0.0.BHPC.RELEASE</quote-service.version>
+
+        <protobuf-java.version>1.2</protobuf-java.version>
+        <broker-proto.version>1.0.8.BHPC.RELEASE</broker-proto.version>
+
+        <disruptor.version>3.4.2</disruptor.version>
+        <commons-pool2.version>2.6.2</commons-pool2.version>
+        <exchange-commons.version>1.6.10-SNAPSHOT</exchange-commons.version>
+        <springboot.version>2.3.2.RELEASE</springboot.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+
+            <dependency>
+                <groupId>io.bhex.ex.quote</groupId>
+                <artifactId>quote-service-sdk</artifactId>
+                <version>${quote-service.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>io.bhex.broker.quote</groupId>
+                <artifactId>quote-bean</artifactId>
+                <version>${quote-server-base.version}</version>
+            </dependency>
+
+            <!-- bhex -->
+            <dependency>
+                <groupId>io.bhex.broker</groupId>
+                <artifactId>broker-proto</artifactId>
+                <version>${broker-proto.version}</version>
+            </dependency>
+
+            <!-- exchange-commons-->
+            <dependency>
+                <groupId>io.bhex.base</groupId>
+                <artifactId>bhex-metrics</artifactId>
+                <version>${bhex-base-common.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>io.bhex.base</groupId>
+                <artifactId>bhex-lang</artifactId>
+                <version>${bhex-base-common.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>io.bhex.base</groupId>
+                <artifactId>bhex-data</artifactId>
+                <version>${bhex-base-common.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>io.bhex.ex.quote</groupId>
+                <artifactId>quote-engine-data</artifactId>
+                <version>${quote-service.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>1.18.12</version>
+            </dependency>
+
+            <!-- base libs -->
+            <dependency>
+                <groupId>io.bhex</groupId>
+                <artifactId>bhex-base-grpc</artifactId>
+                <version>${bhex-base-common.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <artifactId>slf4j-log4j12</artifactId>
+                        <groupId>org.slf4j</groupId>
+                    </exclusion>
+                    <exclusion>
+                        <artifactId>HikariCP</artifactId>
+                        <groupId>com.zaxxer</groupId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>io.bhex</groupId>
+                <artifactId>bhex-base-common</artifactId>
+                <version>${bhex-base-common.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.bhex</groupId>
+                <artifactId>bhex-base-proto</artifactId>
+                <version>${bhex-base-proto.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.grpc</groupId>
+                <artifactId>grpc-netty</artifactId>
+                <version>${grpc.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.grpc</groupId>
+                <artifactId>grpc-testing</artifactId>
+                <scope>test</scope>
+                <version>1.13.1</version>
+            </dependency>
+            <dependency>
+                <groupId>io.grpc</groupId>
+                <artifactId>grpc-netty-shaded</artifactId>
+                <version>${grpc.version}</version>
+            </dependency>
+
+            <!-- common libs -->
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-databind</artifactId>
+                <version>2.11.1</version>
+            </dependency>
+
+            <dependency>
+                <groupId>commons-collections</groupId>
+                <artifactId>commons-collections</artifactId>
+                <version>3.2.2</version>
+            </dependency>
+
+            <dependency>
+                <groupId>commons-io</groupId>
+                <artifactId>commons-io</artifactId>
+                <version>2.6</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>21.0</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>3.5</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-pool2</artifactId>
+            </dependency>
+            <dependency>
+                <groupId>com.googlecode.protobuf-java-format</groupId>
+                <artifactId>protobuf-java-format</artifactId>
+                <version>${protobuf-java.version}</version>
+            </dependency>
+
+        </dependencies>
+    </dependencyManagement>
+
+
+</project>

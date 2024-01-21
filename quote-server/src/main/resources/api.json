@@ -1,0 +1,17 @@
+{
+  "ping": "https://api.headsc.dev/openapi/v1/ping",
+  "brokerInfo": "https://api.headsc.dev/openapi/v1/brokerInfo",
+  "depth": "https://api.headsc.dev/openapi/quote/v1/depth?symbol={symbol}",
+  "trades": "https://api.headsc.dev/openapi/quote/v1/trades?symbol={symbol}",
+  "kline": "https://api.headsc.dev/openapi/quote/v1/klines?symbol={symbol}&interval={interval}",
+  "ticker": "https://api.headsc.dev/openapi/quote/v1/ticker/24hr",
+  "priceTicker": "https://api.headsc.dev/openapi/quote/v1/ticker/price?symbol={symbol}",
+  "bookTicker": "https://api.headsc.dev/openapi/quote/v1/ticker/bookTicker?symbol={symbol}",
+  "newOrder": "https://api.headsc.dev/openapi/v1/order",
+  "queryOrder": "https://api.headsc.dev/openapi/v1/order",
+  "cancelOrder": "https://api.headsc.dev/openapi/v1/order",
+  "openOrders": "https://api.headsc.dev/openapi/v1/openOrders",
+  "historyOrders": "https://api.headsc.dev/openapi/v1/historyOrders",
+  "myTrades": "https://api.headsc.dev/openapi/v1/myTrades",
+  "accountBalance": "https://api.headsc.dev/openapi/v1/account"
+}

@@ -1,0 +1,14 @@
+include:
+  - project: 'bhpc/ci'
+    file: '/java11.yml'
+  - project: 'bhpc/ci'
+    file: '/helm/base.yml'
+  - project: 'bhpc/ci'
+    file: '/helm/master.yml'
+
+variables:
+  APP_ENTRY: "quote-server"
+  APP_HTTP_PORT: 7124
+  APP_GRPC_PORT: 7021
+  APP_WEBSOCKET_PORT: 7121
+  APP_REPLICAS: 1

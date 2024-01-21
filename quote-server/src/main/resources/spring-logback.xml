@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <property name="APP_NAME" value="quote-server"/>
+    <contextName>${APP_NAME}</contextName>
+
+    <include resource="io/bhex/base/log/log-common.xml"/>
+
+    <appender name="APP" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${DEFAULT_DIR}/${APP_NAME}.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>${DEFAULT_DIR}/archives/${APP_NAME}.%d{yyyy-MM-dd}.%i.log.gz</fileNamePattern>
+            <maxHistory>${DEFAULT_MAX_HISTORY}</maxHistory>
+            <maxFileSize>${DEFAULT_MAX_FILE_SIZE}</maxFileSize>
+        </rollingPolicy>
+        <encoder class="io.bhex.base.log.BHexPatternLayoutEncoder">
+            <pattern>${FILE_LOG_PATTERN}</pattern>
+            <charset>${DEFAULT_CHARSET}</charset>
+        </encoder>
+    </appender>
+
+    <appender name="ASYNC_APP" class="ch.qos.logback.classic.AsyncAppender">
+        <appender-ref ref="APP"/>
+        <queueSize>${DEFAULT_QUEUE_SIZE}</queueSize>
+        <maxFlushTime>${DEFAULT_FLUSH_TIME}</maxFlushTime>
+        <includeCallerData>${DEFAULT_INCLUDE_CALLER_DATA}</includeCallerData>
+    </appender>
+
+    <logger name="io.netty.util.internal.PlatformDependent" level="DEBUG"/>
+
+    <root level="INFO">
+        <appender-ref ref="ASYNC_APP"/>
+        <appender-ref ref="CONSOLE"/>
+    </root>
+
+</configuration>

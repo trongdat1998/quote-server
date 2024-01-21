@@ -1,0 +1,58 @@
+spring:
+  application:
+    name: quote-server
+
+  # disabled tracing
+  tracing:
+    enableTracing: false
+    reporter:
+      zipkin:
+        url: http://127.0.0.1:9411/api/v2/spans
+  task:
+    scheduling:
+      pool:
+        size: 16
+      thread-name-prefix: quote-server-schedule-pool-
+
+  redis:
+    cluster:
+      nodes:
+        - quote-server-redis-cluster:6379
+
+server:
+  tomcat:
+    accesslog:
+      enabled: true
+      directory: ./logs/
+    basedir: ./
+  port: 7124
+
+bhex:
+  router.namespace: broker
+  proxy: false
+  api:
+    prefix: /openapi/quote/${bhex.api.version}
+    version: v1
+  inner-api:
+    prefix: /api/quote/${bhex.inner-api.version}
+    version: v1
+  ws:
+    port: 7121
+  broker:
+    name: broker-server
+    host: broker-server
+    port: 7023
+  data-service:
+    name: quote-data-service
+    host: quote-data-service.exchange
+    port: 7063
+  bh-server:
+    name: bh-server
+    host: bh-server.bluehelix
+    port: 7011
+  partition-map:
+    "currency-transaction": "quote-engine"
+    "futures": "futures"
+
+logging:
+  config: "classpath:spring-logback.xml"
